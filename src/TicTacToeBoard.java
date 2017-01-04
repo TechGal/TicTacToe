@@ -61,7 +61,7 @@ public class TicTacToeBoard extends JFrame{
                 buttons[i][j] = new JButton();
                 buttons[i][j].setText(" ");
                 buttons[i][j].setVisible(true);
-                buttons[i][j].setSize(100,100);
+                buttons[i][j].setSize(100, 100);
 
                 game.add(buttons[i][j]);
                 //buttons[i][j].addActionListener(new myActionListner);
