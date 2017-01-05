@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class TicTacToeBoard extends JFrame{
 
-    public static void main (String []args){
+    public void initialize (){
 
         int moves = 9;
 
@@ -22,7 +22,9 @@ public class TicTacToeBoard extends JFrame{
         JPanel mainPanel = new JPanel(new BorderLayout());
         JPanel game = new JPanel(new GridLayout(3, 3));
         JPanel menu = new JPanel(new BorderLayout());
-
+        JPanel bottomLeft = new JPanel(new BorderLayout());
+        JPanel bottomRight = new JPanel(new BorderLayout());
+        JPanel bottomCenter = new JPanel(new FlowLayout());
         JButton [][] buttons = new JButton[3][3];
         JButton reset = new JButton();
         JButton start = new JButton();
@@ -33,7 +35,6 @@ public class TicTacToeBoard extends JFrame{
         board.setSize(400, 500);
         board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         board.setLocationRelativeTo(null);
-        board.setVisible(true);
 
         board.add(mainPanel);
 
@@ -44,15 +45,19 @@ public class TicTacToeBoard extends JFrame{
         mainPanel.add(game, BorderLayout.NORTH);
         mainPanel.add(menu, BorderLayout.SOUTH);
 
-        menu.add(reset, BorderLayout.SOUTH);
-        reset.setSize(100, 25);
+        menu.add(bottomLeft, BorderLayout.WEST);
+        bottomLeft.add(reset);
+        reset.setBounds(10, 10, 100, 25);
         reset.setText("Reset");
         reset.setVisible(true);
-        menu.add(start, BorderLayout.SOUTH);
-        start.setSize(100, 25);
+        menu.add(bottomRight, BorderLayout.EAST);
+        bottomRight.add(start);
+        start.setBounds(10, 10, 100, 25);
         start.setText("Start");
         start.setVisible(true);
-        menu.add(status, BorderLayout.NORTH);
+        menu.add(bottomCenter, BorderLayout.NORTH);
+        bottomCenter.add(status, BorderLayout.CENTER);
+        status.setBounds(0, 0, 100, 50);
         status.setVisible(true);
 
         for (int i = 0; i < 3; i++) {
@@ -60,16 +65,23 @@ public class TicTacToeBoard extends JFrame{
 
                 buttons[i][j] = new JButton();
                 buttons[i][j].setText(" ");
-                buttons[i][j].setVisible(true);
                 buttons[i][j].setSize(100, 100);
+                buttons[i][j].setVisible(true);
 
                 game.add(buttons[i][j]);
-                //buttons[i][j].addActionListener(new myActionListner);
+                //buttons[i][j].addActionListener(new myActionListener);
 
             }
         }
 
+        board.setVisible(true);
 
+    }
+
+    public static void main (String [] args) {
+
+        TicTacToeBoard TicTacToe = new TicTacToeBoard();
+        TicTacToe.initialize();
 
     }
 
